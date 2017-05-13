@@ -12,14 +12,6 @@ app.set('layout extractStyles', true);
 app.use(expressLayouts);
 
 
-app.get('/toto', function(req, res) {
-  var locals = {
-    title: 'Page Title de toto',
-    description: 'Page Description',
-    header: 'Page Header'
-  };
-  res.render('contact', locals);
-});
 
 app.get('/', (req, res) => {
   res.render('home');
