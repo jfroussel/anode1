@@ -5,23 +5,23 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-   res.render('home');
+   res.render('home',{ user : req.user });
 });
 
 router.get('/contact', function (req, res) {
-    res.render('contact');
+    res.render('contact',{ user : req.user });
 });
 
 router.get('/documentation', function (req, res) {
-    res.render('documentation');
+    res.render('documentation',{ user : req.user });
 });
 
 router.get('/about', function (req, res) {
-    res.render('about');
+    res.render('about',{ user : req.user });
 });
 
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register',{ user : req.user});
 });
 
 router.post('/register', function(req, res) {
@@ -29,7 +29,6 @@ router.post('/register', function(req, res) {
         if (err) {
             return res.render('register', { account : account });
         }
-
         passport.authenticate('local')(req, res, function () {
             res.redirect('/');
         });

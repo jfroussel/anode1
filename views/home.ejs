@@ -1,6 +1,12 @@
  <div class="container">
     <div class="text-center">
-        <h1>Welcome on Anode1</h1>
+        <% if (user) { %>
+            <h1>Welcome on Anode1</h1>
+            <h4>You are currently logged in as <%= user.username%></h4>
+        <% } %>
+        <% if (!user) { %>
+            <h1>Welcome on Anode1</h1>
+        <% } %>
         <p class="lead">The best way to design, build, and ship software.</p>
     </div>
 </div>
