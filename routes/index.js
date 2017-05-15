@@ -16,24 +16,31 @@ router.get('/documentation', function (req, res) {
     res.render('documentation',{ user : req.user });
 });
 
+router.get('/profil', function (req, res) {
+    res.render('profil', {user : req.user});
+});
+
 router.get('/about', function (req, res) {
     res.render('about',{ user : req.user });
 });
 
 router.get('/register', function(req, res) {
-    res.render('register',{ user : req.user});
+    res.render('register',{user : res.user});
 });
 
 router.post('/register', function(req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
+            console.log(err);
             return res.render('register', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
+            console.log(res);
             res.redirect('/');
         });
     });
 });
+
 
 router.get('/login', function(req, res) {
     res.render('login', { user : req.user });
